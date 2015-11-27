@@ -4,21 +4,22 @@
 
 module HL.View.Home where
 
-import HL.View
-import HL.View.Code
-import HL.View.Home.Features
-import HL.View.Template
+import           HL.Messages
+import           HL.View
+import           HL.View.Code
+import           HL.View.Home.Features
+import           HL.View.Template
 
 -- | Home view.
-homeV :: [(Text, Text, Text)] -> FromLucid App
-homeV vids =
+homeV :: [Lang] -> [(Text, Text, Text)] -> FromLucid App
+homeV l vids =
   skeleton
     "Haskell Language"
     (\_ _ ->
        linkcss "https://fonts.googleapis.com/css?family=Ubuntu:700")
     (\cur url ->
        do navigation True [] Nothing url
-          header url
+          header l url
           try url
           community url vids
           features
@@ -34,8 +35,8 @@ homeV vids =
                ,js_tryhaskell_pages_js])
 
 -- | Top header section with the logo and code sample.
-header :: (Route App -> Text) -> Html ()
-header url =
+header :: [Lang] -> (Route App -> Text) -> Html ()
+header l url =
   div_ [class_ "header"] $
   (container_
      (row_ (do span6_ [class_ "col-md-6"]
@@ -49,11 +50,11 @@ header url =
   where branding =
           span_ [class_ "name",background url img_logo_png] "Haskell"
         summation =
-          span_ [class_ "summary"] "An advanced purely-functional programming language"
+          span_ [class_ "summary"] (_i18n l MsgHomeSummary)
         tag =
-          span_ [class_ "tag"] "Declarative, statically typed code."
+          span_ [class_ "tag"] (_i18n l MsgHomeTag)
         sample =
-          div_ [class_ "code-sample",title_ "This example is contrived in order to demonstrate what Haskell looks like, including: (1) where syntax, (2) enumeration syntax, (3) pattern matching, (4) consing as an operator, (5) list comprehensions, (6) infix functions. Don't take it seriously as an efficient prime number generator."]
+          div_ [class_ "code-sample",title_ (i18n l MsgCodeSample)]
                (haskellPre codeSample)
 
 -- | Code sample.

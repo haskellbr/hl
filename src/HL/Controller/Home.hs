@@ -10,5 +10,6 @@ import HL.View.Home
 -- | Home controller.
 getHomeR :: C (Html ())
 getHomeR =
-  do vids <- getHomeVideos
-     lucid (homeV vids)
+  do l <- languages
+     vids <- getHomeVideos
+     lucid (homeV l vids)
