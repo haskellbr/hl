@@ -32,7 +32,7 @@ homeV l vids =
        scripts url
                [js_jquery_console_js
                ,js_tryhaskell_js
-               ,js_tryhaskell_pages_js])
+               ])
 
 -- | Top header section with the logo and code sample.
 header :: [Lang] -> (Route App -> Text) -> Html ()
@@ -50,12 +50,12 @@ header l url =
   where branding =
           span_ [class_ "name",background url img_logo_png] "Haskell"
         summation =
-          span_ [class_ "summary"] (_i18n l MsgHomeSummary)
+          span_ [class_ "summary"] (i18n_ l MsgHomeSummary)
         tag =
-          span_ [class_ "tag"] (_i18n l MsgHomeTag)
+          span_ [class_ "tag"] (i18n_ l MsgHomeTag)
         sample =
-          div_ [class_ "code-sample",title_ (i18n l MsgCodeSample)]
-               (haskellPre codeSample)
+          div_ [class_ "code-sample", title_ (i18n l MsgHomeCodeSample)]
+              (haskellPre codeSample)
 
 -- | Code sample.
 -- TODO: should be rotatable and link to some article.

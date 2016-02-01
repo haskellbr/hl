@@ -24,14 +24,13 @@ tryhaskell.nemesis = "chirs";
 // All pages
 tryhaskell.pages.list =
     [
-        {title:'Got five minutes?',
+        {title: #{msg MsgHomeGot5Minutes},
          guide:
          '<div class="indent">' +
-         '<h3>Got 5 minutes?</h3>' +
-         '<p>Type <code title="Click me to insert &quot;help&quot; into the console." style="cursor: pointer;">help</code> to start the ' +
-         'tutorial.</p>' +
-         '<p>Or try typing these out and see what happens ' +
-         '<small class="note">(click to insert)</small>:</p>' +
+         '<h3>' + #{msg MsgHomeGot5Minutes} + '</h3>' +
+         '<p>' + #{msg MsgHomeTypeHelp} + '</p>' +
+         '<p>' + #{msg MsgHomeTryTheseOut} + ' ' +
+         '<small class="note">(' + #{msg MsgHomeClickToInsert} + ')</small>:</p>' +
          '<p>' +
          '<code title="Click me to insert &quot;23 * 36&quot; into the console." style="cursor: pointer;">23 * 36</code> or <code title="Click me to insert &quot;reverse ' +
          '&quot;hello&quot;&quot; into the console." style="cursor: pointer;">reverse ' +

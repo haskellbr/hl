@@ -1,5 +1,4 @@
 -- | Web server.
-
 module Main where
 
 import Control.Concurrent.MVar
@@ -18,6 +17,7 @@ main =
      st <- static dir
      tmpDir <- getTemporaryDirectory
      let cacheDir = tmpDir </> "hl-cache"
+     print cacheDir
      createDirectoryIfMissing True cacheDir
      cacheVar <- newMVar cacheDir
      env <- getEnvironment

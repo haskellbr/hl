@@ -43,7 +43,8 @@ executable hl
                      -O2
                      -fno-warn-type-defaults
   main-is:           Main.hs
-  build-depends:     base >= 4 && < 5
+  build-depends:     aeson >= 0.8.0.2
+                   , base >= 4 && < 5
                    , blaze-builder
                    , blaze-html
                    , blaze-markup
@@ -65,6 +66,7 @@ executable hl
                    , pandoc
                    , pandoc-types
                    , resourcet
+                   , shakespeare >= 2.0.5
                    , spoon
                    , tagstream-conduit
                    , text
